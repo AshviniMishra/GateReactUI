@@ -338,7 +338,7 @@ class registerForm extends Component {
           {/* {this.state.nameConfirmed && this.state.formIsValid ? (
             <Button>Register</Button>
           ) : null} */}
-          <Button>Register</Button>
+          <Button>Submit Form</Button>
         </form>
       </React.Fragment>
     );
