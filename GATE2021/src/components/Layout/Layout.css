@@ -1,0 +1,39 @@
+.Content {
+    margin-top: 5px;
+    width: 100%;
+}
+
+.Layout-side {
+    width: 20%;
+    float: left;
+    display: flex;
+    border-left: solid 1px;
+    box-shadow: grey;
+}
+
+.Layout-border-left {
+    border-left: solid 1px;
+}
+
+.Layout-main {
+    width: 80%;
+    float: left;
+    display: flex;
+    border-left: solid 1px;
+    box-shadow: grey;
+}
+
+.center {
+    margin: auto;
+    width: 95%;
+}
+
+@media(max-width:760px) {
+    .Layout-side {
+        width: 100%;
+    }
+    .Layout-main {
+        width: 100%;
+        margin: auto;
+    }
+}

@@ -1,0 +1,17 @@
+.Button {
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: dodgerblue;
+    border: none;
+}
+
+.Button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}

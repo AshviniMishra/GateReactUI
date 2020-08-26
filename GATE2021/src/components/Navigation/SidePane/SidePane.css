@@ -1,0 +1,27 @@
+/* .SidePane {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding: 10px;
+    transition: 0.5s;
+    color: blue;
+    margin: 10px;
+} */
+
+/* @media screen and (max-height: 450px) {
+    .SidePane {
+        padding-top: 15px;
+    }
+    .SidePane a {
+        font-size: 18px;
+    }
+} */
+
+@media(max-width: 499px) {
+    .DesktopOnly {
+        display: none;
+    }
+}
