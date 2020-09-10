@@ -8,9 +8,114 @@ import Modal from "react-bootstrap/Modal";
 
 class registerForm extends Component {
   state = {
+    // registerForm: {
+    //   firstName: {
+    //     elementType: "Sinput",
+    //     elementConfig: {
+    //       type: "text",
+    //       placeholder: "First Name",
+    //       id: "fname",
+    //       maxLength: "10",
+    //     },
+    //     label: "First Name",
+    //     css: {
+    //       style: {
+    //         width: "33.33%",
+    //         float: "left",
+    //         position: "relative",
+    //         backgroundColor: "white",
+    //         font: "inherit",
+    //         borderRadius: "5px",
+    //       },
+    //     },
+    //     validation: {
+    //       required: true,
+    //       charactersOnly: true,
+    //     },
+    //     valid: false,
+    //     touched: false,
+    //     value: "",
+    //   },
+    //   middleName: {
+    //     elementType: "Sinput",
+    //     elementConfig: {
+    //       type: "text",
+    //       placeholder: "Middle Name",
+    //       id: "Mname",
+    //       maxLength: "10",
+    //     },
+    //     css: {
+    //       style: {
+    //         width: "33.33%",
+    //         float: "left",
+    //         position: "relative",
+    //         backgroundColor: "white",
+    //         font: "inherit",
+    //         borderRadius: "5px",
+    //       },
+    //     },
+    //     label: "Middle Name",
+    //     validation: {
+    //       required: true,
+    //       charactersOnly: true,
+    //     },
+    //     valid: false,
+    //     touched: false,
+    //     value: "",
+    //   },
+    //   lastName: {
+    //     elementType: "Sinput",
+    //     elementConfig: {
+    //       type: "text",
+    //       placeholder: "Last Name",
+    //       id: "lname",
+    //       maxLength: "10",
+    //     },
+    //     css: {
+    //       style: {
+    //         width: "33.33%",
+    //         float: "left",
+    //         position: "relative",
+    //         backgroundColor: "white",
+    //         font: "inherit",
+    //         borderRadius: "5px",
+    //       },
+    //     },
+    //     label: "Last Name",
+    //     validation: {
+    //       required: true,
+    //       charactersOnly: true,
+    //     },
+    //     valid: false,
+    //     touched: false,
+    //     value: "",
+    //   },
+    //   fullName: {
+    //     elementType: "input",
+    //     elementConfig: {
+    //       type: "text",
+    //       placeholder: "Full Name",
+    //       id: "full_name",
+    //       readOnly: "{true}",
+    //     },
+    //     label: "Name of Candidate",
+    //     desc:
+    //       "Above name will appear in qualifying score card, so adjust accordingly",
+    //     value: "",
+    //     valid: false,
+    //   },
+    //   conf_button: {
+    //     elementType: "button",
+    //     elementConfig: {
+    //       type: "button",
+    //       val: "Confirm",
+    //     },
+    //     valid: true,
+    //   },
+    // },
     registerForm: {
       firstName: {
-        elementType: "Sinput",
+        elementType: "input",
         elementConfig: {
           type: "text",
           placeholder: "First Name",
@@ -18,16 +123,6 @@ class registerForm extends Component {
           maxLength: "10",
         },
         label: "First Name",
-        css: {
-          style: {
-            width: "33.33%",
-            float: "left",
-            position: "relative",
-            backgroundColor: "white",
-            font: "inherit",
-            borderRadius: "5px",
-          },
-        },
         validation: {
           required: true,
           charactersOnly: true,
@@ -37,22 +132,12 @@ class registerForm extends Component {
         value: "",
       },
       middleName: {
-        elementType: "Sinput",
+        elementType: "input",
         elementConfig: {
           type: "text",
           placeholder: "Middle Name",
           id: "Mname",
           maxLength: "10",
-        },
-        css: {
-          style: {
-            width: "33.33%",
-            float: "left",
-            position: "relative",
-            backgroundColor: "white",
-            font: "inherit",
-            borderRadius: "5px",
-          },
         },
         label: "Middle Name",
         validation: {
@@ -64,22 +149,12 @@ class registerForm extends Component {
         value: "",
       },
       lastName: {
-        elementType: "Sinput",
+        elementType: "input",
         elementConfig: {
           type: "text",
           placeholder: "Last Name",
           id: "lname",
           maxLength: "10",
-        },
-        css: {
-          style: {
-            width: "33.33%",
-            float: "left",
-            position: "relative",
-            backgroundColor: "white",
-            font: "inherit",
-            borderRadius: "5px",
-          },
         },
         label: "Last Name",
         validation: {
@@ -120,7 +195,9 @@ class registerForm extends Component {
   confirmName = (event) => {
     event.preventDefault();
     let fullName = this.state.registerForm.fullName.value;
-
+    alert(
+      "The entered name will appear on GATE admit card. Do you wish to continue?"
+    );
     let valid = this.state.registerForm.fullName.valid;
     if (valid === false) {
       alert("Enter the name correctly");
@@ -223,17 +300,23 @@ class registerForm extends Component {
             placeholder: "Evaluate the expression and place the value below",
           },
           value: "",
+          validation: {
+            required: false,
+          },
+          valid: true,
           touched: false,
         },
       };
       delete newAppForm.conf_button;
+      delete newAppForm.firstName;
+      delete newAppForm.middleName;
+      delete newAppForm.lastName;
       this.setState({ registerForm: newAppForm, nameConfirmed: true });
     }
   };
 
   inputChangedHandler = (event, inputIdentifier) => {
     event.preventDefault();
-    console.log("Input Identifier " + inputIdentifier);
     const updatedRegisterForm = {
       ...this.state.registerForm,
     };
@@ -272,10 +355,9 @@ class registerForm extends Component {
     for (let inputIdentifier in updatedRegisterForm) {
       formIsValid = updatedRegisterForm[inputIdentifier].valid && formIsValid;
     }
-    console.log(
-      "Mobile Number Validity => " + updatedRegisterForm[inputIdentifier].valid
-    );
-    console.log("FormIsValid " + formIsValid);
+    // console.log(
+    //   "Mobile Number Validity => " + updatedRegisterForm[inputIdentifier].valid
+    // );
     this.setState({
       registerForm: updatedRegisterForm,
       formIsValid: formIsValid,
@@ -335,10 +417,9 @@ class registerForm extends Component {
               desc={formElement.config.desc}
             />
           ))}
-          {/* {this.state.nameConfirmed && this.state.formIsValid ? (
-            <Button>Register</Button>
-          ) : null} */}
-          <Button>Submit Form</Button>
+          {this.state.nameConfirmed && this.state.formIsValid ? (
+            <Button>Submit</Button>
+          ) : null}
         </form>
       </React.Fragment>
     );
