@@ -89,19 +89,18 @@ class login extends Component {
         let user = formData;
         axios.post('http://localhost:8080/gate2021/doLogin', user).then(
             response => {
-                this.props.context.userLoggerIn = true;
+                localStorage.setItem('isUserLoggedIn',true);
                 let session = {
                     ...this.props.context,
                     ...response.data
                 }
                 session.userLoggerIn = true;
                 localStorage.setItem('session', JSON.stringify(session, null, 5));
-                //console.log('Response from server -> ' + JSON.stringify(response, null, 5));
                 this.props.history.push('/profile');
             }
         ).catch(
             error => {
-                this.props.context.userLoggerIn = true;
+                localStorage.setItem('isUserLoggedIn',false);
                 let session = {
                     ...this.props.context,
                     ...error

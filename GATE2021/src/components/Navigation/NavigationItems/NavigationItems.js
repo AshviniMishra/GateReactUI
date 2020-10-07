@@ -9,7 +9,7 @@ class navigationItems extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            session: localStorage.getItem('session')
+            isUserLoggedIn : localStorage.getItem('isUserLoggedIn')
         }
     }
 
@@ -18,7 +18,8 @@ class navigationItems extends Component {
     }
 
     render() {
-        console.log(localStorage.getItem('session'));
+        var session = JSON.parse(localStorage.getItem('sessioin'));
+        console.log('[navigationItems] Session -> ' , session);
         let navElement1 = null;
         if (this.props.context.appStage === 'REGISTRATION') {
             navElement1 = (<NavigationItem to="/register">Register</NavigationItem>);
@@ -26,18 +27,17 @@ class navigationItems extends Component {
 
         let navElement2 = null;
 
-        // if (localStorage.getItem('session').userLoggerIn == false) {
-        //     navElement2 = (<NavigationItem to="/login">Logout</NavigationItem>);
-        // } else {
-        //     navElement2 = (<NavigationItem to="/login">Login</NavigationItem>)
-        // }
+        if (this.state.isUserLoggedIn) {
+            navElement2 = (<NavigationItem to="/login">Logout</NavigationItem>);
+        } else {
+            navElement2 = (<NavigationItem to="/login">Login</NavigationItem>)
+        }
 
         return (
             <ul className="Navigation">
                 <NavigationItem to="/" exact>Home</NavigationItem>
                 {navElement1}
                 {navElement2}
-                <NavigationItem to="/faqs">FAQs</NavigationItem>
 
             </ul>
         )
@@ -45,7 +45,6 @@ class navigationItems extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
 
-        console.log('[Naviagation Items ] should component update');
         return true;
     }
 
