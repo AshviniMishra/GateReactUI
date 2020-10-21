@@ -3,7 +3,7 @@ import Input from '../Input/Input';
 import { connect } from 'react-redux';
 import Button from '../Button/Button';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../../axiosConfig';
 import Validate from '../../../globals/Validate';
 
 class login extends Component {
@@ -44,14 +44,14 @@ class login extends Component {
                     valid: false,
                     touched: false
                 },
-                captcha:{
-                    elementType: 'captcha',
-                    elementConfig:{
-                        placeholder:'Evaluate the expression and place the value below'
-                    },
-                    value:'',
-                    touched:false
-                }
+                // captcha:{
+                //     elementType: 'captcha',
+                //     elementConfig:{
+                //         placeholder:'Evaluate the expression and place the value below'
+                //     },
+                //     value:'',
+                //     touched:false
+                // }
             },
             formIsValid: false
         }
@@ -87,7 +87,7 @@ class login extends Component {
             formData[formElementIdentifier] = this.state.registerForm[formElementIdentifier].value;
         }
         let user = formData;
-        axios.post('http://localhost:8080/gate2021/doLogin', user).then(
+        axios.post('doLogin', user).then(
             response => {
                 localStorage.setItem('isUserLoggedIn',true);
                 let session = {
@@ -105,6 +105,7 @@ class login extends Component {
                     ...this.props.context,
                     ...error
                 }
+                alert('Some error ocurred, Please try again!', error);
                 localStorage.setItem('session', JSON.stringify(session));
             }
         )

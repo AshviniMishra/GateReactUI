@@ -5,7 +5,7 @@ import Badge from "react-bootstrap/Badge";
 import Accordion from "react-bootstrap/Accordion";
 import Input from "../../Input/Input";
 import NotLoggedIn from "../../NotLoggedIn";
-import axios from "axios";
+import axios from "../../../../axiosConfig";
 import { connect } from "react-redux";
 
 class applicationForm extends Component {
@@ -705,7 +705,7 @@ class applicationForm extends Component {
     console.log("Country is = " + country);
 
     axios
-      .post("http://localhost:8080/gate2021/fetchExamCities1", country)
+      .post("fetchExamCities1", country)
       .then((response) => {
         //localStorage.setItem('session', JSON.stringify(state));
         console.log(

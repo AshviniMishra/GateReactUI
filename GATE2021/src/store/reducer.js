@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../axiosConfig';
 
 const initialState = {
     appStage: 'APPLICATION_FILING',
@@ -24,7 +24,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState) => {
-    axios.post('http://localhost:8080/gate2021/getInitialContext', "statMap").then(
+    axios.post('getInitialContext', "statMap").then(
         response => {
             console.log('[Reducer.js] Response -> ' + JSON.stringify(response.data, null, 5));
         }

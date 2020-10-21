@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Input from "./Input/Input";
 import Button from "../UI/Button/Button";
 import Badge from "react-bootstrap/Badge";
-import axios from "axios";
+import axios from "../../axiosConfig";
 import Validate from "../../globals/Validate";
 import Modal from "react-bootstrap/Modal";
 
@@ -375,7 +375,7 @@ class registerForm extends Component {
     let regVal = formData;
     console.log("The form data is ", regVal);
     axios
-      .post("http://localhost:8080/gate2021/doRegister", regVal)
+      .post("doRegister", regVal)
       .then((response) => {
         console.log(JSON.stringify(response.data, null, 5));
       })
